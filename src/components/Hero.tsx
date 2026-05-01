@@ -1,9 +1,15 @@
 import React from "react"
+import { motion } from "framer-motion"
 
 function Hero(): React.JSX.Element {
   return (
     <section className="min-h-screen flex items-center justify-center text-center px-6">
-      <div className="max-w-2xl">
+      <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl"
+        >
         {/* Availability badge */}
         <p className="text-sm text-green-400 mb-4">
           ● Available for freelance work
@@ -23,21 +29,25 @@ function Hero(): React.JSX.Element {
 
         {/* Buttons */}
         <div className="flex justify-center gap-4">
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+             whileTap={{ scale: 0.95 }}
             href="#contact"
             className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition"
           >
             Hire Me
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href="#projects"
             className="border border-gray-700 px-6 py-3 rounded-lg hover:bg-gray-800 transition"
           >
             View Projects
-          </a>
+          </motion.a>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

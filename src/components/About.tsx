@@ -1,9 +1,16 @@
 import React from "react"
+import { motion } from "framer-motion"
 
 function About(): React.JSX.Element {
   return (
     <section className="py-24 px-6">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }} 
+            className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center"
+        >
         
         {/* Left side (text) */}
         <div>
@@ -32,7 +39,7 @@ function About(): React.JSX.Element {
             Your Image
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

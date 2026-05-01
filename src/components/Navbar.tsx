@@ -1,5 +1,6 @@
 import { useState } from "react"
 import React from "react"
+import { motion } from "framer-motion"
 
 type NavItem = {
   label: string
@@ -16,7 +17,12 @@ function Navbar(): React.JSX.Element {
   const [active, setActive] = useState<string>("")
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800">
+    <motion.nav
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }} 
+        className="fixed w-full top-0 z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800"
+    >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <h1 className="text-lg font-bold">grimRogue</h1>
 
@@ -37,7 +43,7 @@ function Navbar(): React.JSX.Element {
           ))}
         </div>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
 

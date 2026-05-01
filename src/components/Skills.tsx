@@ -1,4 +1,6 @@
 import React from "react"
+import { motion } from "framer-motion"
+import { container, item } from "./stagger"
 
 const skills: string[] = [
   "React",
@@ -14,16 +16,22 @@ function Skills(): React.JSX.Element {
     <section id="skills" className="py-20 px-6 text-center">
       <h2 className="text-3xl font-bold mb-10">Skills</h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-xl mx-auto">
+      <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show" 
+            className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-xl mx-auto"
+        >
         {skills.map((skill: string) => (
-          <div
+          <motion.div
             key={skill}
+            variants={item}
             className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700"
           >
             {skill}
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }
