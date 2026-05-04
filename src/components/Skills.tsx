@@ -5,7 +5,7 @@ import { container, item } from "./stagger"
 const skills: string[] = [
   "React",
   "Node.js",
-  "MongoDB",
+  "PostgreSQL",
   "Express",
   "TypeScript",
   "Git",
