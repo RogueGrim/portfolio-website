@@ -1,8 +1,6 @@
 import { useState } from "react"
 import React from "react"
 import { motion } from "framer-motion"
-import darkMode from "../assets/dark.svg"
-import lightMode from "../assets/light.svg"
 
 type NavItem = {
   label: string
@@ -44,8 +42,8 @@ function Navbar(): React.JSX.Element {
               {item.label}
             </a>
           ))}
-           {Mode == "Dark" ? <img src={lightMode} alt="Dark Mode"  className="max-w-8"/> 
-            : <img src={darkMode} alt="Dark Mode"  className="max-w-8"/>  }
+           {Mode == "Dark" ? <img src='/light.svg' alt="Dark Mode"  className="max-w-8"/> 
+            : <img src='/dark.svg' alt="Dark Mode"  className="max-w-8"/>  }
         </div>
       </div>
     </motion.nav>

@@ -44,6 +44,7 @@ const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
           font-bold
           text-transparent
           bg-clip-text
+          mb-6
           select-none
         "
       >
@@ -69,9 +70,14 @@ function Hero(): React.JSX.Element {
         <GradientText/>
 
         {/* Subtext */}
-        <p className="text-gray-400 mb-6 text-lg text-pretty">
-          A student & developer focused on creating clean, performant,
-          and user-friendly applications using modern web technologies.
+        <p className="text-gray-400 mb-6 text-lg text-balanced">
+          I'm an MCA student and aspiring full-stack developer with a strong
+          interest in building real-world applications.
+          I focus on writing clean, maintainable code and creating smooth user
+          experiences. Currently, I'm improving my backend skills while building
+          full-stack projects.
+          My goal is to work on impactful products and help businesses turn ideas
+          into scalable applications.
         </p>
 
         <motion.a
