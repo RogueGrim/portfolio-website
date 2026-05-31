@@ -1,52 +1,113 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion"
+
+function GradientText() {
+  const mouseX = useMotionValue(50)
+
+  const smoothX = useSpring(mouseX, {
+    stiffness: 150,
+    damping: 20,
+  })
+
+  const backgroundImage = useMotionTemplate`
+    radial-gradient(
+      circle at ${smoothX}% 50%,
+      #60a5fa 0%,
+      #8b5cf6 25%,
+      #ec4899 50%,
+      #ffffff 100%
+    )
+  `
+
+const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+
+    const percentage =
+      ((e.clientX - rect.left) / rect.width) * 100
+
+    mouseX.set(percentage)
+  }
+
+  return (
+    <div
+      onMouseMove={handleMove}
+      className="inline-block"
+    >
+      <motion.h1
+        style={{
+          backgroundImage,
+          backgroundSize: "200% 200%",
+        }}
+        className="
+          text-7xl
+          md:text-9xl
+          font-bold
+          text-transparent
+          bg-clip-text
+          select-none
+        "
+      >
+        Equan Asim
+      </motion.h1>
+    </div>
+  )
+}
 
 function Hero(): React.JSX.Element {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center text-center px-6">
+    <section id="home" className="min-h-screen flex items-center gap-5">
       <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl"
+            className="max-w-6xl mx-auto px-6 py-4"
         >
-        {/* Availability badge */}
-        <p className="text-sm text-green-400 mb-4">
-          ● Available for freelance work
+        <p className="text-lg mb-4">
+          Hey, I'm
         </p>
-
-        {/* Heading */}
-        <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-          I build fast & scalable
-          <span className="text-blue-500"> web apps</span>
-        </h2>
+        
+        <GradientText/>
 
         {/* Subtext */}
-        <p className="text-gray-400 mb-8">
-          MCA student & developer focused on creating clean, performant,
+        <p className="text-gray-400 mb-6 text-lg text-pretty">
+          A student & developer focused on creating clean, performant,
           and user-friendly applications using modern web technologies.
         </p>
 
-        {/* Buttons */}
-        <div className="flex justify-center gap-4">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-             whileTap={{ scale: 0.95 }}
-            href="#contact"
-            className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+        <motion.a
+          href="#projects"
+          initial="rest"
+          whileHover="hover"
+          className="inline-flex items-center gap-2"
+        >
+          <motion.span
+            whileHover={{scale:1.1}}
           >
-            Hire Me
-          </motion.a>
-
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="#projects"
-            className="border border-gray-700 px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+          See More
+          </motion.span>
+        
+          <motion.span
+            variants={{
+              rest:{
+                x:0,
+              },
+              hover:{
+                x:8,
+                transition:{
+                  x:{
+                    type:"spring",
+                    stiffness: 300,
+                  },
+                  y: {
+                    duration: 0.4,
+                  },
+                },
+              },
+            }}
           >
-            View Projects
-          </motion.a>
-        </div>
+          →
+          </motion.span>
+        </motion.a>
       </motion.div>
     </section>
   )
