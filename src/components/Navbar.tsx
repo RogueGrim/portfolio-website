@@ -10,7 +10,6 @@ type NavItem = {
 const navItems: NavItem[] = [
   { label: "Projects", href: "#projects" },
   { label: "Resume", href: "#resume" },
-  { label: "Contact", href: "#contact" },
 ]
 
 function Navbar(): React.JSX.Element {

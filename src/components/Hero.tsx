@@ -1,5 +1,6 @@
 import React from "react"
 import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion"
+import Contact from "./Contact"
 
 function GradientText() {
   const mouseX = useMotionValue(50)
@@ -56,7 +57,7 @@ const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
 
 function Hero(): React.JSX.Element {
   return (
-    <section id="home" className="min-h-screen flex items-center gap-5">
+    <section id="home" className="min-h-screen flex justify-center gap-5 flex-col">
       <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,6 +116,7 @@ function Hero(): React.JSX.Element {
           </motion.span>
         </motion.a>
       </motion.div>
+    <Contact/>
     </section>
   )
 }

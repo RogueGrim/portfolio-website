@@ -1,44 +1,51 @@
-import { useState } from "react"
+import { motion } from "framer-motion"
 
+type props = {
+ image: string
+ text: string
+ link: string
+}
+
+function GradientButton({image, text, link}:props):React.JSX.Element {
+ return (
+  <motion.div
+    className="h-15 w-55 relative rounded-xs bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 bg-size-[200%_100%]"
+    initial="rest"
+    whileHover="hover"
+    variants={{
+      rest:{
+        backgroundPosition: "0% 50%"
+      },
+      hover:{
+        backgroundPosition: "100% 50%",
+        scale:1.1
+      }
+    }}
+    transition={{
+      backgroundPosition:{
+        duration: 3, 
+        ease: "linear", 
+        repeat: Infinity
+      },
+      scale: {duration: 0.2 }
+    }}
+  >
+    <a  href={link} className="bg-white inset-0.5 absolute flex items-center  justify-center gap-2 rounded-xs cursor-pointer">
+        <img src={image} alt={text} className="w-8 h-8 cursor-pointer"/>
+        <button className="max-w-fit max-h-fit cursor-pointer">{text}</button>
+    </a>
+    
+  </motion.div>
+ )
+}
 function Contact(): React.JSX.Element {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  return (
-    <section id="contact" className="py-20 px-6 text-center">
-      <h2 className="text-3xl font-bold mb-6">Let's Work Together 🚀</h2>
-
-      <form className="max-w-md mx-auto space-y-4">
-        <input
-          name="name"
-          placeholder="Name"
-          onChange={handleChange}
-          className="w-full p-3 bg-gray-800 rounded"
-        />
-        <input
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          className="w-full p-3 bg-gray-800 rounded"
-        />
-        <textarea
-          name="message"
-          placeholder="Message"
-          onChange={handleChange}
-          className="w-full p-3 bg-gray-800 rounded"
-        />
-      </form>
-    </section>
-  )
+ return(
+  <div className="flex gap-5 mx-50 mt-10">
+    <GradientButton image="/email.png" text="Send an Email" link="#"/>
+    <GradientButton image="/github.png" text="GitHub" link="#"/>
+    <GradientButton image="/linkedin.png" text="LinkedIn" link="#"/>
+  </div>
+ )
 }
 
 export default Contact
