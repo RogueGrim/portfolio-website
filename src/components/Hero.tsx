@@ -15,7 +15,7 @@ function GradientText() {
       #60a5fa 0%,
       #8b5cf6 25%,
       #ec4899 50%,
-      #ffffff 100%
+      #60a5fa 100%
     )
   `
 
@@ -70,7 +70,7 @@ function Hero(): React.JSX.Element {
         <GradientText/>
 
         {/* Subtext */}
-        <p className="text-gray-400 mb-6 text-lg text-balanced">
+        <p className="mb-6 text-lg text-balanced">
           I'm an MCA student and aspiring full-stack developer with a strong
           interest in building real-world applications.
           I focus on writing clean, maintainable code and creating smooth user

@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
 
 function Navbar(): React.JSX.Element {
   const [active, setActive] = useState<string>("")
-  const [Mode, setMode] = useState<string>("Dark")
+  const [Mode, setMode] = useState<string>("Light")
 
   return (
     <motion.nav
@@ -36,7 +36,7 @@ function Navbar(): React.JSX.Element {
               className={`transition ${
                 active === item.label
                   ? "text-blue-500"
-                  : "text-gray-300 hover:text-white"
+                  : "hover:text-blue-500"
               }`}
             >
               {item.label}

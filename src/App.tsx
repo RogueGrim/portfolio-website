@@ -6,7 +6,7 @@ import Contact from "./components/Contact"
 
 function App(): React.JSX.Element {
   return (
-    <div className="bg-gray-950 text-white">
+    <div className="bg-white text-black">
       <Navbar />
       <Hero />
       <Skills reverse={true}/>

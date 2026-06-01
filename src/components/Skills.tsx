@@ -17,16 +17,12 @@ function Skills({reverse}: reverse ): React.JSX.Element{
       image: "/react.png",
     },
     {
-      name:"Node JS",
+      name:"NodeJS",
       image:"/node.png"
     },
     {
       name: "TypeScript",
       image: "/typescript.png",
-    },
-    {
-      name: "Node",
-      image: "/node.png",
     },
     {
       name: "Postgres",
@@ -55,7 +51,16 @@ function Skills({reverse}: reverse ): React.JSX.Element{
     <section id="skills" className="py-20 px-6 text-center">
       <div className="max-w-6xl mx-auto px-6 py-4">
           <h2 className="text-3xl font-bold mb-10">Skills</h2>
-          <div className="overflow-hidden">
+          <div 
+            className="
+              overflow-hidden
+              [mask-image:linear-gradient(
+              to_right,
+              transparent,
+              white_10%,
+              white_90%,
+              transparent
+            ">
             <motion.div
               className="flex gap-8 w-max"
               animate={{
@@ -79,9 +84,10 @@ function Skills({reverse}: reverse ): React.JSX.Element{
                     px-6
                     py-4
                     rounded-xl
-                    bg-zinc-900
+                    backdrop-blur-md
+                  bg-white/5
                     border
-                    border-zinc-800
+                  border-black/10
                   "
                 >
                   <img
