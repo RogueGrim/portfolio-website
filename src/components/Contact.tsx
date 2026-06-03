@@ -30,8 +30,8 @@ function GradientButton({image, text, link}:props):React.JSX.Element {
       scale: {duration: 0.2 }
     }}
   >
-    <a  href={link} className="bg-white inset-0.5 absolute flex items-center  justify-center gap-2 rounded-xs cursor-pointer">
-        <img src={image} alt={text} className="w-8 h-8 cursor-pointer"/>
+    <a  href={link} className=" dark:bg-black dark:text-white bg-white inset-0.5 absolute flex items-center  justify-center gap-2 rounded-xs cursor-pointer">
+        <img src={image} alt={text} className="w-8 h-8 cursor-pointer dark:invert"/>
         <button className="max-w-fit max-h-fit cursor-pointer">{text}</button>
     </a>
     
@@ -40,11 +40,16 @@ function GradientButton({image, text, link}:props):React.JSX.Element {
 }
 function Contact(): React.JSX.Element {
  return(
-  <div className="flex gap-5 mx-50 mt-10">
+  <motion.div 
+    className="flex gap-5 mx-50 mt-10"
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    >
     <GradientButton image="/email.png" text="Send an Email" link="#"/>
     <GradientButton image="/github.png" text="GitHub" link="#"/>
     <GradientButton image="/linkedin.png" text="LinkedIn" link="#"/>
-  </div>
+  </motion.div>
  )
 }
 

@@ -57,7 +57,7 @@ const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
 
 function Hero(): React.JSX.Element {
   return (
-    <section id="home" className="min-h-screen flex justify-center gap-5 flex-col">
+    <section id="home" className="min-h-screen flex justify-center gap-5 flex-col dark:bg-black dark:text-white">
       <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}

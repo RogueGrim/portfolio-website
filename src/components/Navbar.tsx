@@ -7,26 +7,29 @@ type NavItem = {
   href: string
 }
 
+type props = {
+  darkMode: boolean
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+}
 const navItems: NavItem[] = [
+  { label: "Technologies", href:"#skills"},
   { label: "Projects", href: "#projects" },
   { label: "Resume", href: "#resume" },
 ]
 
-function Navbar(): React.JSX.Element {
+function Navbar({darkMode, setDarkMode}: props): React.JSX.Element {
   const [active, setActive] = useState<string>("")
-  const [Mode, setMode] = useState<string>("Light")
-
   return (
     <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }} 
-        className="fixed w-full top-0 z-50 backdrop-blur"
+        className="fixed w-full top-0 z-50 backdrop-blur dark:bg-black dark:text-white" 
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between">
         <h1 className="text-md">EA.</h1>
 
-        <div className="hidden md:flex space-x-8">
+        <div className="flex space-x-5 items-center">
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -41,8 +44,19 @@ function Navbar(): React.JSX.Element {
               {item.label}
             </a>
           ))}
-           {Mode == "Dark" ? <img src='/light.svg' alt="Dark Mode"  className="max-w-8"/> 
-            : <img src='/dark.svg' alt="Dark Mode"  className="max-w-8"/>  }
+          {
+            darkMode == true ? 
+            <button
+              onClick={()=>setDarkMode(false)}
+            >
+              <img src="/light.png" alt="" className="w-6 h-6 dark:invert"/>
+            </button>:
+            <button
+              onClick={()=>setDarkMode(true)}
+            >
+              <img src="/dark.png" alt="" className="w-6 h-6"/>
+            </button>
+          }
         </div>
       </div>
     </motion.nav>

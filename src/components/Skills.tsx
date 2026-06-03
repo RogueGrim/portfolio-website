@@ -48,9 +48,9 @@ function Skills({reverse}: reverse ): React.JSX.Element{
   ]
 
   return (
-    <section id="skills" className="py-20 px-6 text-center">
+    <section id="skills" className="py-20 px-6 dark:bg-black dark:text-white">
       <div className="max-w-6xl mx-auto px-6 py-4">
-          <h2 className="text-3xl font-bold mb-10">Skills</h2>
+          <h2 className="text-3xl font-bold mb-10">Technologies</h2>
           <div 
             className="
               overflow-hidden
@@ -93,7 +93,7 @@ function Skills({reverse}: reverse ): React.JSX.Element{
                   <img
                     src={skill.image}
                     alt={skill.name}
-                    className="w-8 h-8"
+                    className={index == 6 ? 'w-8 h-8 dark:invert' : 'w-8 h-8'}
                   />
 
                   <span>{skill.name}</span>
