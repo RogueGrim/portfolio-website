@@ -49,12 +49,12 @@ function Navbar({darkMode, setDarkMode}: props): React.JSX.Element {
             <button
               onClick={()=>setDarkMode(false)}
             >
-              <img src="/light.png" alt="" className="w-6 h-6 dark:invert"/>
+              <img src="/light.png" alt="" className="w-6 h-6 dark:invert cursor-pointer"/>
             </button>:
             <button
               onClick={()=>setDarkMode(true)}
             >
-              <img src="/dark.png" alt="" className="w-6 h-6"/>
+              <img src="/dark.png" alt="" className="w-6 h-6 cursor-pointer"/>
             </button>
           }
         </div>

@@ -6,13 +6,13 @@ import { useState } from "react"
 
 function App(): React.JSX.Element {
 
-  const [ darkMode, setDarkMode ] =useState<boolean>(false)
+  const [ darkMode, setDarkMode ] =useState<boolean>(true)
 
   return (
     <div className ={darkMode == true ? 'dark' : 'bg-white'}>
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Hero />
-      <Skills reverse={true}/>
+      <Skills />
       <Projects />
     </div>
   )

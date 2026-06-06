@@ -54,7 +54,7 @@ function Projects(): React.JSX.Element {
           {projects.map((project) => (
             <motion.div 
               key={project.title} 
-              className="max-w-max" 
+              className="max-w-max mb-4" 
               whileHover={{scale:1.05}}
               transition={{ease:'linear'}}
               >
@@ -70,12 +70,12 @@ function Projects(): React.JSX.Element {
               <div className="space-x-4 flex ">
                 <a href={project.live}>
                   <button>
-                    <img src="/link.png" alt="live" className='w-6 h-6 dark:invert'/>
+                    <img src="/link.png" alt="live" className='w-6 h-6 dark:invert cursor-pointer'/>
                   </button>
                 </a>
                 <a href={project.code} className='appearance-none'>
                   <button>
-                    <img src="/github.png" alt="github" className='w-6 h-6 dark:invert'/>
+                    <img src="/github.png" alt="github" className='w-6 h-6 dark:invert cursor-pointer'/>
                   </button>
                 </a>
               </div>

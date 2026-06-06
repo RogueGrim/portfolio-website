@@ -40,7 +40,7 @@ const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
           backgroundSize: "200% 200%",
         }}
         className="
-          text-7xl
+          text-8xl
           md:text-9xl
           font-bold
           text-transparent
