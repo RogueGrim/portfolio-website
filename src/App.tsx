@@ -9,7 +9,7 @@ function App(): React.JSX.Element {
   const [ darkMode, setDarkMode ] =useState<boolean>(true)
 
   return (
-    <div className ={darkMode == true ? 'dark' : 'bg-white'}>
+    <div className ={`${darkMode == true ? 'dark' : ''}`}>
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Hero />
       <Skills />

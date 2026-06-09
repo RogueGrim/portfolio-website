@@ -16,7 +16,6 @@ const navItems: NavItem[] = [
   {label:'Home', href:'#home'},
   { label: "Technologies", href:"#skills"},
   { label: "Projects", href: "#projects" },
-  { label: "Resume", href: "#resume" },
 ]
 
 function Navbar({darkMode, setDarkMode}: props): React.JSX.Element {
