@@ -57,21 +57,21 @@ const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
 
 function Hero(): React.JSX.Element {
   return (
-    <section id="home" className="min-h-screen flex justify-center gap-5 flex-col dark:bg-black dark:text-white">
+    <section id="home" className="min-h-screen flex justify-center flex-col dark:bg-black dark:text-white">
       <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-6xl mx-auto px-6 py-4"
+            className="max-w-6xl mx-auto px-6 py-6"
         >
-        <p className="text-lg mb-4">
+        <p className="text-lg md:mb-4 mt-8">
           Hey, I'm
         </p>
         
         <GradientText/>
 
         {/* Subtext */}
-        <p className="mb-6 text-lg text-balanced">
+        <p className="mb-6 text-lg text-balanced hidden md:block">
           I'm an MCA student and aspiring full-stack developer with a strong
           interest in building real-world applications.
           I focus on writing clean, maintainable code and creating smooth user
@@ -79,6 +79,10 @@ function Hero(): React.JSX.Element {
           full-stack projects.
           My goal is to work on impactful products and help businesses turn ideas
           into scalable applications.
+        </p>
+        <p className="md:hidden mb-4">
+          I focus on writing clean, maintainable code and creating smooth user
+          experiences.
         </p>
 
         <motion.a
