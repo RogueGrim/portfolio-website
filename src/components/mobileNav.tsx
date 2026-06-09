@@ -4,9 +4,11 @@ import { AnimatePresence, motion } from "framer-motion"
 type Props = {
     navItems: NavItem[],
     isVisible: boolean
+    setIsVisible:React.Dispatch<React.SetStateAction<boolean>>
+    active:string
 }
 
-function MobileNav({navItems,isVisible}: Props):React.JSX.Element {
+function MobileNav({navItems, isVisible, setIsVisible, active}: Props):React.JSX.Element {
     return(
         <AnimatePresence>
            {isVisible && (
@@ -41,7 +43,14 @@ function MobileNav({navItems,isVisible}: Props):React.JSX.Element {
                     <a
                         key={item.label}
                         href={item.href}
-                        className="transition dark:text-white max-w-min"
+                        className={`dark:bg-white max-w-min bg-black
+                            ${
+                                active === item.label
+                                ? "bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
+                                : "hover:bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
+                            }
+                        `}
+                        onClick={()=>setIsVisible(false)}
                     >
                     {item.label}
                     </a>

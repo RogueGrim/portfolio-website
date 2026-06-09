@@ -125,8 +125,6 @@ function Conveyor({reverse}:reverse): React.JSX.Element {
 
 function Skills(): React.JSX.Element{
 
-  
-
   return (
     <section id="skills" className="py-20 px-6 dark:bg-black dark:text-white">
       <div className="max-w-6xl mx-auto px-6 py-4">

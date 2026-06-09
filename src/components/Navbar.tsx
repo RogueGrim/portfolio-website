@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import React from "react"
 import { motion } from "framer-motion"
 import MobileNav from "./mobileNav"
@@ -13,14 +13,56 @@ type props = {
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 const navItems: NavItem[] = [
+  {label:'Home', href:'#home'},
   { label: "Technologies", href:"#skills"},
   { label: "Projects", href: "#projects" },
   { label: "Resume", href: "#resume" },
 ]
 
 function Navbar({darkMode, setDarkMode}: props): React.JSX.Element {
+
   const [active, setActive] = useState<string>("")
+
   const [isVisible, setIsVisible] = useState<boolean>(false)
+
+  useEffect(() => {
+  const sections = document.querySelectorAll("section")
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+
+        switch (entry.target.id) {
+          case "home":
+            setActive('Home')
+            break
+          case "skills":
+            setActive("Technologies")
+            break
+
+          case "projects":
+            setActive("Projects")
+            break
+
+          case "resume":
+            setActive("Resume")
+            break
+        }
+      })
+    },
+    {
+      rootMargin: "-20% 0px -60% 0px",
+    }
+  )
+
+  sections.forEach(section =>
+    observer.observe(section)
+  )
+
+  return () => observer.disconnect()
+}, [])
+
   return (
     <motion.nav
         initial={{ y: -50, opacity: 0 }}
@@ -37,7 +79,7 @@ function Navbar({darkMode, setDarkMode}: props): React.JSX.Element {
               key={item.label}
               href={item.href}
               onClick={() => setActive(item.label)}
-              className={`transition dark:bg-white bg-black  md:block hidden ${
+              className={`dark:bg-white bg-black  md:block hidden ${
                 active === item.label
                   ? "bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
                   : "hover:bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
@@ -80,7 +122,7 @@ function Navbar({darkMode, setDarkMode}: props): React.JSX.Element {
           </div>
         </div>
       </div>
-      <MobileNav navItems={navItems} isVisible={isVisible}/>
+      <MobileNav navItems={navItems} isVisible={isVisible} setIsVisible={setIsVisible} active={active}/>
     </motion.nav>
   )
 }
